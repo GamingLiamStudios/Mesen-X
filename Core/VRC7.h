@@ -63,7 +63,7 @@ protected:
 
 		UpdatePrgRamAccess();
 
-		//_audio->SetMuteAudio((_controlFlags & 0x40) != 0);
+		_audio->SetMuteAudio((_controlFlags & 0x40) != 0);
 	}
 
 	void WriteRegister(uint16_t addr, uint8_t value) override

@@ -659,7 +659,7 @@ private:
 	
 	bool _audioSettingsChanged = false;
 	uint32_t _audioLatency = 50;
-	uint32_t _EPSMClockFrequency = 3579545;
+	uint32_t _EPSMClockFrequency = 8000000;
 	double _channelVolume[13] = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 	double _channelPanning[13] = { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 2.0 };
 	EqualizerFilterType _equalizerFilterType = EqualizerFilterType::None;

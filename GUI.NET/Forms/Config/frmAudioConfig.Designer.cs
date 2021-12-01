@@ -2121,7 +2121,7 @@ namespace Mesen.GUI.Forms.Config
             this.lblEPSMClockFrequency.Name = "lblEPSMClockFrequency";
             this.lblEPSMClockFrequency.Size = new System.Drawing.Size(303, 17);
             this.lblEPSMClockFrequency.TabIndex = 3;
-            this.lblEPSMClockFrequency.Text = "EPSM Clock Frequency (default is 3579545Hz)";
+            this.lblEPSMClockFrequency.Text = "EPSM Clock Frequency (default is 8000000Hz)";
             // 
             // chkSilenceTriangleHighFreq
             // 

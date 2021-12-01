@@ -22,7 +22,7 @@ private:
 
 	int16_t _lastOutput;
 	int16_t _currentOutput;
-
+	bool _muted;
 	double _clock;
 
 	static constexpr uint8_t cycleCount = 12;
@@ -41,7 +41,7 @@ private:
 
 	void UpdateOutputLevel()
 	{
-		_console->GetApu()->AddExpansionAudioDelta(AudioChannel::VRC7, _currentOutput - _lastOutput);
+		_console->GetApu()->AddExpansionAudioDelta(AudioChannel::VRC7, _muted ? 0 : (_currentOutput - _lastOutput));
 		_lastOutput = _currentOutput;
 	}
 
@@ -82,7 +82,7 @@ protected:
 		ArrayInfo<InputBuffer> inputBuffer{ &_inputBuffer };
 		ValueInfo<opll_t> chip{ &_chip };
 		ValueInfo<double> clock{ &_clock };
-		Stream(lastOutput, currentOutput, inputBuffer, chip, clock);
+		Stream(lastOutput, currentOutput, inputBuffer, chip, clock, _muted);
 	}
 
 	void ClockAudio() override
@@ -127,10 +127,15 @@ public:
 		_lastOutput = 0;
 		_currentOutput = 0;
 		_inputBuffer = {};
-
+		_muted = false;
 		_clock = 0;
 
 		OPLL_Reset(&_chip, opll_type_ds1001);
+	}
+
+	void SetMuteAudio(bool muted)
+	{
+		_muted = muted;
 	}
 
 	void WriteRegister(uint16_t addr, uint8_t value)
