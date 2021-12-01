@@ -15,12 +15,6 @@ class Mapper559 : public BaseMapper
 
     std::unique_ptr<Mapper559MemoryHandler> _memoryHandler;
 
-    uint8_t _sameReadCount;
-    int32_t _tileNumber;
-    uint8_t _ppuIdle;
-    bool _inFrame;
-    bool _needFrame;
-
     uint8_t _nametableRead;
     uint16_t _lastNametableAddress;
     uint8_t _lastAttribute;
@@ -235,15 +229,6 @@ class Mapper559 : public BaseMapper
         UpdateChrBanks();
     }
 
-    void ProcessCpuClock() override
-    {
-        if (_ppuIdle) {
-            _ppuIdle--;
-            if (_ppuIdle == 0)
-                _inFrame = false;
-        }
-    }
-
   protected:
     virtual uint16_t RegisterStartAddress() override { return 0x5100; }
     virtual uint16_t RegisterEndAddress() override { return 0x510D; }
@@ -271,10 +256,6 @@ class Mapper559 : public BaseMapper
         _memoryHandler.reset(new Mapper559MemoryHandler(_console.get()));
 
         _nametableRead = 0;
-        _ppuIdle = 0;
-        _inFrame = false;
-        _sameReadCount = 0;
-        _tileNumber = 0;
 
         // Default values
         WriteRegister(0x5100, 0x00);
