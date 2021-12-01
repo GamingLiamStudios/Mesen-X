@@ -146,6 +146,7 @@
 #include "Mapper244.h"
 #include "Mapper246.h"
 #include "Mapper253.h"
+#include "Mapper559.h"
 #include "McAcc.h"
 #include "MMC1.h"
 #include "MMC1_105.h"
@@ -643,6 +644,8 @@ BaseMapper* MapperFactory::GetMapperFromID(RomData &romData)
 		case 528: break; //831128C
 		case 529: return new T230();
 		case 530: return new Ax5705();
+		// 531-558
+		case 559: return new Mapper559();
 
 		case UnifBoards::Ac08: return new Ac08(); //mapper 42?
 		case UnifBoards::Cc21: return new Cc21();
