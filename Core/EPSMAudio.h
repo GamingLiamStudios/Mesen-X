@@ -217,7 +217,7 @@ protected:
 				for (uint8_t x = 0; x < 2; x++)
 				{
 					_currentOutputs[x] += samples[x];
-					_currentOutputs[x] += samples[x+2]/8;
+					_currentOutputs[x] += samples[x+2]/11;
 				}
 
 				auto& input = _inputBuffer[cycle];
@@ -230,7 +230,7 @@ protected:
 
 			for (uint8_t x = 0; x < 2; x++)
 			{
-				_currentOutputs[x] /= 5;
+				_currentOutputs[x] = (int16_t)(_currentOutputs[x] / 2.5);
 			}
 
 			UpdateOutputLevel();

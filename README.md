@@ -1,12 +1,16 @@
-# Mesen
+# Mesen-X
 
-Mesen is a cross-platform NES/Famicom emulator for Windows & Linux built in C++ and C#.
+Mesen-X is a fork of Mesen, which is a cross-platform NES/Famicom emulator for Windows & Linux built in C++ and C#.
+The original Mesen project has paused development, and this fork is meant to collect patches contributed by the community.
 
-If you want to support this project, please consider making a donation:
+Changes include:
+* Support for newer versions of Mono, for running Mesen on Linux
+* ESPM homebrew expansion audio support
+* HD Pack improvements
+* Replaced VRC7 synth code with Nuked-OPLL
+* Debugger improvements, for [Alchemy65](https://github.com/AlchemicRaker/alchemy65)
 
-[![Donate](https://www.mesen.ca/images/donate.png)](https://www.mesen.ca/Donate.php)
-
-[Website (https://www.mesen.ca)](https://www.mesen.ca)  
+[Original website (https://www.mesen.ca)](https://www.mesen.ca)  
 [Documentation](https://novasquirrel.github.io/Mesen-X/index.html)
 
 ## Development Builds
@@ -25,11 +29,11 @@ Linux: [![Build status](https://github.com/NovaSquirrel/Mesen/actions/workflows/
 
 ### Windows
 
-The latest version is available on the [website](https://www.mesen.ca).  Older releases are available from the [releases tab on GitHub](https://github.com/SourMesen/Mesen/releases).
+The latest versions can be found on [the releases tab](https://github.com/NovaSquirrel/Mesen-X/releases)
 
 ### Ubuntu
 
-The official releases (same downloads as the Windows builds above) also contain the Linux version of Mesen, built under Ubuntu 16 - you should be able to use that in most cases if you are using Ubuntu.
+There's a separate Linux release available on each release in the releases tab. You should be able to use that in most cases if you are using Ubuntu.
 
 The Linux version is a standard .NET executable file and requires Mono to run - you may need to configure your environment to allow it to automatically run .exe files through Mono, or manually run Mesen by using mono (e.g: "mono Mesen.exe").
 
@@ -44,7 +48,7 @@ The default Mono version in Ubuntu 18.04 is 4.6.2 (which also causes some layout
 
 ### Arch Linux
 
-Packages are available here: <https://aur.archlinux.org/packages/mesen>
+Packages are available here: <https://aur.archlinux.org/packages/mesen-x-git>
 
 ## Roadmap
 
@@ -53,6 +57,8 @@ Things that ***may or may not*** be added in the future, in no particular order:
 * Support for more UNIF boards and more NES/Famicom input devices
 * Shaders
 * TAS editor
+* Support for new homebrew mappers
+* More Lua features
 
 ## Compiling
 

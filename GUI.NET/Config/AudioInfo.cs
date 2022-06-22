@@ -27,7 +27,7 @@ namespace Mesen.GUI.Config
 		[MinMax(0, 100)] public UInt32 EPSMVolume_L = 50;
 		[MinMax(0, 100)] public UInt32 EPSMVolume_R = 50;
 
-		[MinMax(10000, 32000000)] public UInt32 EPSMClockFrequency = 3579545;
+		[MinMax(10000, 32000000)] public UInt32 EPSMClockFrequency = 8000000;
 
 		[MinMax(-100, 100)] public Int32 Square1Panning = 0;
 		[MinMax(-100, 100)] public Int32 Square2Panning = 0;

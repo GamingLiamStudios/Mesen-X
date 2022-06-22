@@ -93,6 +93,11 @@ void BisqwitNtscFilter::OnBeforeApplyFilter()
 	const double pi = std::atan(1.0) * 4;
 	int contrast = (int)((pictureSettings.Contrast + 1.0) * (pictureSettings.Contrast + 1.0) * 167941);
 	int saturation = (int)((pictureSettings.Saturation + 1.0) * (pictureSettings.Saturation + 1.0) * 144044);
+	bool colorimetryCorrection = _console->GetSettings()->GetNtscFilterSettings().ColorimetryCorrection;
+
+	// [saturation at 0] * 100 / [I or Q width at 0]
+	double SatFactor = 144044 * 100 / 12;
+
 	for(int i = 0; i < 27; i++) {
 		_sinetable[i] = (int8_t)(8 * std::sin(i * 2 * pi / 12 + pictureSettings.Hue * pi));
 	}
@@ -103,14 +108,14 @@ void BisqwitNtscFilter::OnBeforeApplyFilter()
 
 	_y = contrast / _yWidth;
 
-	_ir = (int)(contrast * 1.994681e-6 * saturation / _iWidth);
-	_qr = (int)(contrast * 9.915742e-7 * saturation / _qWidth);
+	_ir = colorimetryCorrection ? (int)(contrast * 1.994681e-6 * saturation / _iWidth) : (int)(contrast * (0.95599 / SatFactor) * saturation / _iWidth);
+	_qr = colorimetryCorrection ? (int)(contrast * 9.915742e-7 * saturation / _qWidth) : (int)(contrast * (0.62082 / SatFactor) * saturation / _qWidth);
 
-	_ig = (int)(contrast * 9.151351e-8 * saturation / _iWidth);
-	_qg = (int)(contrast * -6.334805e-7 * saturation / _qWidth);
+	_ig = colorimetryCorrection ? (int)(contrast * 9.151351e-8 * saturation / _iWidth) : (int)(contrast * (-0.27201 / SatFactor) * saturation / _iWidth);
+	_qg = colorimetryCorrection ? (int)(contrast * -6.334805e-7 * saturation / _qWidth) : (int)(contrast * (-0.64720 / SatFactor) * saturation / _qWidth);
 
-	_ib = (int)(contrast * -1.012984e-6 * saturation / _iWidth);
-	_qb = (int)(contrast * 1.667217e-6 * saturation / _qWidth);
+	_ib = colorimetryCorrection ? (int)(contrast * -1.012984e-6 * saturation / _iWidth) : (int)(contrast * (-1.10674 / SatFactor) * saturation / _iWidth);
+	_qb = colorimetryCorrection ? (int)(contrast * 1.667217e-6 * saturation / _qWidth) : (int)(contrast * (1.70423 / SatFactor) * saturation / _qWidth);
 }
 
 void BisqwitNtscFilter::RecursiveBlend(int iterationCount, uint64_t *output, uint64_t *currentLine, uint64_t *nextLine, int pixelsPerCycle, bool verticalBlend)

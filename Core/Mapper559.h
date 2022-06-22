@@ -5,9 +5,9 @@
 class Mapper559 : public BaseMapper
 {
   private:
-    uint8_t _prgMode : 2;
-    uint8_t _chrMode : 2;
-    bool _expansionMode : 1;
+    uint8_t _prgMode;
+    uint8_t _chrMode;
+    bool _expansionMode;
 
     uint8_t _chrUpperBits;
     uint8_t _prgBanks[4];
@@ -268,6 +268,15 @@ class Mapper559 : public BaseMapper
     {
         _console->GetMemoryManager()->RegisterWriteHandler(
           _memoryHandler.get(), 0x2000, 0x2007);
+    }
+
+    virtual void StreamState(bool saving) override
+    {
+        BaseMapper::StreamState(saving);
+
+        ArrayInfo<uint8_t> prgBanks = {_prgBanks, 4};
+        ArrayInfo<uint8_t> chrBanks = {_chrBanks, 8};
+        Stream(_nametableRead, _prgMode, prgBanks, _chrMode, _chrUpperBits, chrBanks, _expansionMode);
     }
 
     void WriteRegister(uint16_t addr, uint8_t value) override

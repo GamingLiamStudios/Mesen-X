@@ -18,5 +18,8 @@ namespace UnifBoards {
 		UnlVrc7,
 		Unl8237A,
 		SssNrom256,
+		Ks106C,
+		ResetNromX1n1,
+		Hp898f,
 	};
 }
