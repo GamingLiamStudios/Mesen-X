@@ -109,7 +109,7 @@ bool HdPackLoader::CheckFile(string filename)
 bool HdPackLoader::LoadFile(string filename, vector<uint8_t> &fileData)
 {
 	fileData.clear();
-
+	MessageManager::DisplayMessage("Pack Loader", "Loading " + filename);
 	if(_loadFromZip) {
 		if(_reader.ExtractFile(filename, fileData)) {
 			return true;
@@ -134,6 +134,8 @@ bool HdPackLoader::LoadFile(string filename, vector<uint8_t> &fileData)
 bool HdPackLoader::LoadPack()
 {
 	string currentLine;
+	uint32_t lineCnt;
+
 	try {
 		vector<uint8_t> hdDefinition;
 		if(!LoadFile("hires.txt", hdDefinition)) {
@@ -142,7 +144,13 @@ bool HdPackLoader::LoadPack()
 
 		InitializeGlobalConditions();
 
+		MessageManager::DisplayMessage("Pack Loader", "Processing hires.txt");
+		lineCnt = 1;
 		for(string lineContent : StringUtilities::Split(string(hdDefinition.data(), hdDefinition.data() + hdDefinition.size()), '\n')) {
+			if (lineCnt % 1000 == 0) {
+				MessageManager::DisplayMessage("Pack Loader", std::to_string(lineCnt) + " lines processed");
+			}
+			lineCnt++;
 			if(lineContent.empty()) {
 				continue;
 			}
@@ -206,9 +214,11 @@ bool HdPackLoader::LoadPack()
 				ProcessSfxTag(tokens);
 			}
 		}
+		MessageManager::DisplayMessage("Pack Loader", std::to_string(lineCnt) + " lines processed in total");
 
 		LoadCustomPalette();
 		InitializeHdPack();
+		MessageManager::DisplayMessage("Pack Loader", "Completed");
 
 		return true;
 	} catch(std::exception &ex) {

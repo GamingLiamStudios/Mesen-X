@@ -20,6 +20,7 @@ extern "C"
 
 		/* Volume Table */
 		uint32_t* voltbl;
+		int volumeMode;
 
 		uint8_t reg[0x20];
 		int32_t out;

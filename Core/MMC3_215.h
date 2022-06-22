@@ -80,6 +80,7 @@ protected:
 		if(_exRegs[0] & 0x80) {
 			bank <<= 1;
 			if(_exRegs[0] & 0x20) {
+				bank &= 0xFC;
 				MMC3::SelectPRGPage(0, bank);
 				MMC3::SelectPRGPage(1, bank + 1);
 				MMC3::SelectPRGPage(2, bank + 2);
@@ -98,7 +99,7 @@ protected:
 	void WriteRegister(uint16_t addr, uint8_t value) override
 	{
 		if(addr < 0x8000) {
-			switch(addr) {
+			switch(addr & 0xF007) {
 				case 0x5000: _exRegs[0] = value; UpdateState(); break;
 				case 0x5001: _exRegs[1] = value; UpdateState(); break;
 				case 0x5007: _exRegs[2] = value; break;

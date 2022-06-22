@@ -26,6 +26,7 @@
 #include "Bmc64in1NoRepeat.h"
 #include "Bmc70in1.h"
 #include "Bmc190in1.h"
+#include "Bmc1024CA1.h"
 #include "Bmc235.h"
 #include "Bmc255.h"
 #include "Bmc60311C.h"
@@ -33,17 +34,29 @@
 #include "Bmc80013B.h"
 #include "Bmc810544CA1.h"
 #include "Bmc830118C.h"
+#include "Bmc830134C.h"
 #include "Bmc830425C4391T.h"
+#include "Bmc891227.h"
 #include "Bmc8in1.h"
+#include "BmcK3036.h"
 #include "BmcG146.h"
 #include "BmcGn45.h"
 #include "BmcHpxx.h"
 #include "BmcK3046.h"
 #include "BmcNtd03.h"
+#include "BmcS2009.h"
+#include "BmcSa005A.h"
+#include "BmcTj03.h"
+#include "BmcCtc09.h"
+#include "BmcCtc12in1.h"
+#include "UnlKs106C.h"
+#include "BmcResetNromX1n1.h"
+#include "Bmc830752C.h"
 #include "BnRom.h"
 #include "Bs5.h"
 #include "Caltron41.h"
 #include "Cc21.h"
+#include "Ctc15.h"
 #include "Cheapocabra.h"
 #include "CityFighter.h"
 #include "CNROM.h"
@@ -65,8 +78,7 @@
 #include "Ghostbusters63in1.h"
 #include "Gkcx1.h"
 #include "GoldenFive.h"
-#include "Gs2004.h"
-#include "Gs2013.h"
+#include "Gs2004_Gs2013.h"
 #include "GxRom.h"
 #include "Henggedianzi177.h"
 #include "Henggedianzi179.h"
@@ -83,6 +95,7 @@
 #include "JalecoSs88006.h"
 #include "JyCompany.h"
 #include "Kaiser202.h"
+#include "Kaiser7010.h"
 #include "Kaiser7012.h"
 #include "Kaiser7013B.h"
 #include "Kaiser7016.h"
@@ -109,6 +122,7 @@
 #include "Mapper60.h"
 #include "Mapper61.h"
 #include "Mapper62.h"
+#include "Mapper81.h"
 #include "Mapper83.h"
 #include "Mapper91.h"
 #include "Mapper103.h"
@@ -129,6 +143,7 @@
 #include "Mapper213.h"
 #include "Mapper214.h"
 #include "Mapper216.h"
+#include "Mapper217.h"
 #include "Mapper218.h"
 #include "Mapper221.h"
 #include "Mapper222.h"
@@ -139,6 +154,7 @@
 #include "Mapper230.h"
 #include "Mapper231.h"
 #include "Mapper233.h"
+#include "Mapper237.h"
 #include "Mapper234.h"
 #include "Mapper240.h"
 #include "Mapper241.h"
@@ -146,11 +162,39 @@
 #include "Mapper244.h"
 #include "Mapper246.h"
 #include "Mapper253.h"
+#include "Mapper319.h"
+#include "Mapper359.h"
+#include "Mapper357.h"
+#include "Mapper360.h"
+#include "Mapper375.h"
+#include "Mapper380.h"
+#include "Mapper382.h"
+#include "Mapper385.h"
+#include "Mapper389.h"
+#include "Mapper437.h"
+#include "Mapper438.h"
+#include "Mapper453.h"
+#include "Mapper449.h"
+#include "Mapper541.h"
+#include "Mapper433.h"
+#include "Mapper431.h"
+#include "Mapper429.h"
+#include "Mapper417.h"
+#include "Mapper416.h"
+#include "Mapper415.h"
+#include "Mapper414.h"
+#include "Mapper409.h"
+#include "Mapper403.h"
+#include "Mapper402.h"
+#include "Mapper452.h"
+#include "Mapper540.h"
 #include "Mapper559.h"
 #include "McAcc.h"
 #include "MMC1.h"
 #include "MMC1_105.h"
 #include "MMC1_155.h"
+#include "MMC1_404.h"
+#include "MMC1_550.h"
 #include "MMC2.h"
 #include "MMC3.h"
 #include "MMC3_12.h"
@@ -178,7 +222,6 @@
 #include "MMC3_205.h"
 #include "MMC3_208.h"
 #include "MMC3_215.h"
-#include "MMC3_217.h"
 #include "MMC3_219.h"
 #include "MMC3_224.h"
 #include "MMC3_238.h"
@@ -186,8 +229,38 @@
 #include "MMC3_249.h"
 #include "MMC3_250.h"
 #include "MMC3_254.h"
+#include "MMC3_267.h"
+#include "MMC3_334.h"
+#include "MMC3_353.h"
+#include "MMC3_361.h"
+#include "MMC3_364.h"
+#include "MMC3_370.h"
+#include "MMC3_372.h"
+#include "MMC3_376.h"
+#include "MMC3_377.h"
+#include "MMC3_383.h"
+#include "MMC3_391.h"
+#include "MMC3_393.h"
+#include "MMC3_395.h"
+#include "MMC3_399.h"
+#include "MMC3_401.h"
+#include "MMC3_410.h"
+#include "MMC3_411.h"
+#include "MMC3_412.h"
+#include "MMC3_422.h"
+#include "MMC3_430.h"
+#include "MMC3_432.h"
+#include "MMC3_441.h"
+#include "MMC3_444.h"
+#include "MMC3_445.h"
+#include "MMC3_516.h"
+#include "MMC3_534.h"
 #include "MMC3_Bmc411120C.h"
 #include "MMC3_BmcF15.h"
+#include "MMC3_BmcGn26.h"
+#include "MMC3_BmcK3006.h"
+#include "MMC3_BmcK3033.h"
+#include "MMC3_BmcL6in1.h"
 #include "MMC3_ChrRam.h"
 #include "MMC3_Coolboy.h"
 #include "MMC3_Kof97.h"
@@ -222,6 +295,7 @@
 #include "Sachen_147.h"
 #include "Sachen_148.h"
 #include "Sachen_149.h"
+#include "Sachen3013.h"
 #include "Sachen74LS374N.h"
 #include "Sachen8259.h"
 #include "Sachen9602.h"
@@ -252,6 +326,8 @@
 #include "Unl158B.h"
 #include "Unl255in1.h"
 #include "Unl8237A.h"
+#include "Unl831128C.h"
+#include "UnlBj56.h"
 #include "UnlD1038.h"
 #include "UnlDripGame.h"
 #include "UnlPci556.h"
@@ -337,7 +413,7 @@ BaseMapper* MapperFactory::GetMapperFromID(RomData &romData)
 		case 24: return new VRC6(VRCVariant::VRC6a);
 		case 25: return new VRC2_4();
 		case 26: return new VRC6(VRCVariant::VRC6b);
-		case 27: return new VRC2_4();
+		case 27: return new Cc21();
 		case 28: return new Action53();
 		case 29: return new SealieComputing();
 		case 30: return new UnRom512();
@@ -370,6 +446,7 @@ BaseMapper* MapperFactory::GetMapperFromID(RomData &romData)
 		case 52: return new MMC3_52();
 		case 53: return new Supervision();
 		case 54: return new NovelDiamond();
+		case 55: return new Malee();
 		case 56: return new Kaiser202();
 		case 57: return new Mapper57();
 		case 58: return new Mapper58();
@@ -395,6 +472,7 @@ BaseMapper* MapperFactory::GetMapperFromID(RomData &romData)
 		case 78: return new JalecoJf16();
 		case 79: return new Nina03_06(false);
 		case 80: return new TaitoX1005(false);
+		case 81: return new Mapper81();
 		case 82: return new TaitoX1017();
 		case 83: return new Mapper83();
 		case 85: return new VRC7();
@@ -510,9 +588,12 @@ BaseMapper* MapperFactory::GetMapperFromID(RomData &romData)
 		case 212: return new Mapper212();
 		case 213: return new Mapper213();
 		case 214: return new Mapper214();
-		case 215: return new MMC3_215();
+		case 215:
+			if (romData.Info.SubMapperID == 1)
+				return new Unl8237A();
+			return new MMC3_215();
 		case 216: return new Mapper216();
-		case 217: return new MMC3_217();
+		case 217: return new Mapper217();
 		case 218: return new Mapper218();
 		case 219: return new MMC3_219();
 		case 220: return new Kaiser7057();
@@ -531,6 +612,7 @@ BaseMapper* MapperFactory::GetMapperFromID(RomData &romData)
 		case 234: return new Mapper234();
 		case 235: return new Bmc235();
 		case 236: return new Bmc70in1();
+		case 237: return new Mapper237();
 		case 238: return new MMC3_238();
 		case 240: return new Mapper240();
 		case 241: return new Mapper241();
@@ -557,14 +639,18 @@ BaseMapper* MapperFactory::GetMapperFromID(RomData &romData)
 		case 264: return new Yoko();
 		case 265: return new T262();
 		case 266: return new CityFighter();
-		//267
-		case 268: return new MMC3_Coolboy();
+		case 267: return new MMC3_267();
+		case 268:
+			if(romData.Info.BoardName.compare("MINDKIDS") == 0) {
+				romData.Info.SubMapperID = 1;
+			}
+			return new MMC3_Coolboy();
 		//269-270
 		case 271: break; //22026
 		//272-273
 		case 274: return new Bmc80013B();
 		//275-282
-		case 283: return new Gs2004();
+		case 283: return new Gs2004_Gs2013();
 		case 284: return new UnlDripGame();
 		case 285: return new A65AS();
 		case 286: return new Bs5();
@@ -587,75 +673,147 @@ BaseMapper* MapperFactory::GetMapperFromID(RomData &romData)
 		case 305: return new Kaiser7031();
 		case 306: return new Kaiser7016();
 		case 307: return new Kaiser7037();
-		case 308: break; //TH2131-1
+		case 308: return new VRC2_4();
 		case 309: return new Lh51();
 		//310-311
 		case 312: return new Kaiser7013B();
 		case 313: return new ResetTxrom();
 		case 314: return new Bmc64in1NoRepeat();
-		case 315: break; //830134C
+		case 315: return new Bmc830134C();
 		//316-318
-		case 319: return new Hp898f();
+		case 319: return new Mapper319();
 		case 320: return new Bmc830425C4391T();
 		//321
-		case 322: break; //K-3033
+		case 322: return new MMC3_BmcK3033();
 		case 323: return new FaridSlrom();
 		case 324: return new FaridUnrom();
 		case 325: return new MMC3_MaliSB();
-		case 327: break; //10-24-C-A1
+		case 327: return new Bmc1024CA1();
 		case 328: return new Rt01();
 		case 329: return new Edu2000();
 		//330
 		case 331: return new Bmc12in1();
 		case 332: return new Super40in1Ws();
 		case 333: return new Bmc8in1(); // + NEWSTAR-GRM070-8IN1
-		//334
-		case 335: break; //CTC-09
+		case 334: return new MMC3_334();
+		case 335: return new BmcCtc09();
 		case 336: return new BmcK3046();
-		case 337: break; //CTC-12IN1
-		case 338: break; //SA005-A
-		case 339: break; //K-3006
-		case 340: break; //K-3036
-		case 341: break; //TJ-03
+		case 337: return new BmcCtc12in1();
+		case 338: return new BmcSa005A();
+		case 339: return new MMC3_BmcK3006();
+		case 340: return new BmcK3036();
+		case 341: return new BmcTj03();
 		case 342: break; //COOLGIRL
 		//343
-		case 344: break; //GN26
-		case 345: break; //L6IN1
+		case 344: return new MMC3_BmcGn26();
+		case 345: return new MMC3_BmcL6in1();
 		case 346: return new Kaiser7012();
 		//347
 		case 348: return new Bmc830118C();
 		case 349: return new BmcG146();
-		case 350: break; //891227
-
+		case 350: return new Bmc891227();
+		//352:
+		case 353: return new MMC3_353();
+		case 357: return new Mapper357();
+		case 359: return new Mapper359();
+		case 360: return new Mapper360();
+		case 361: return new MMC3_361();
+		case 364: return new MMC3_364();
 		case 366: return new BmcGn45();
+		case 370: return new MMC3_370();
+		case 372: return new MMC3_372();
+		case 375: return new Mapper375();
+		case 376: return new MMC3_376();
+		case 377: return new MMC3_377();
+		//378-379
+		case 380: return new Mapper380();
+		//381-382
+		case 382: return new Mapper382();
+		case 383: return new MMC3_383();
+		case 385: return new Mapper385();
+		case 389: return new Mapper389();
+		//384-390
+		case 391: return new MMC3_391();
+		case 393: return new MMC3_393();
+		//394
+		case 395: return new MMC3_395();
+		case 396: return new Bmc830752C();
+		//
+		case 399: return new MMC3_399();
+		//396-400
+		case 401: return new MMC3_401();
 
+		case 402: return new Mapper402();
+		case 403: return new Mapper403();
+		case 404: return new MMC1_404();
+		//
+		case 409: return new Mapper409();
+		case 410: return new MMC3_410();
+		case 411: return new MMC3_411();
+		case 412: return new MMC3_412();
+		//
+		case 414: return new Mapper414();
+		case 415: return new Mapper415();
+		case 416: return new Mapper416();
+		case 417: return new Mapper417();
+
+		case 422: return new MMC3_422();
+		case 429: return new Mapper429();
+		case 430: return new MMC3_430();
+		case 431: return new Mapper431();
+		case 432: return new MMC3_432();
+		case 433: return new Mapper433();
+		case 434: return new BmcS2009();
+		//
+		case 437: return new Mapper437();
+		case 438: return new Mapper438();
+		//
+		case 441: return new MMC3_441();
+		case 444: return new MMC3_444();
+		case 445: return new MMC3_445();
+		case 449: return new Mapper449();
+		//
+		case 452: return new Mapper452();
+		case 453: return new Mapper453();
+		//
 		case 513: return new Sachen9602();
 		//514-517
+		case 516: return new MMC3_516();
 		case 518: return new Dance2000();
 		case 519: return new Eh8813A();
 		//520
 		case 521: return new DreamTech01();
 		case 522: return new Lh10();
 		//523
-		case 524: break; //900218
-		case 525: break; //KS7021A
-		case 526: break; //BJ56
-		case 527: break; //AX40G
-		case 528: break; //831128C
+		case 524: return new VRC2_4();
+		case 525: return new VRC2_4();
+		case 526: return new UnlBj56();
+		case 527: return new VRC2_4();
+		case 528: return new Unl831128C();
 		case 529: return new T230();
 		case 530: return new Ax5705();
-		// 531-558
+		case 534: return new MMC3_534();
+
+		case 540: return new Mapper540();
+		case 541: return new Mapper541();
+		case 548: return new Ctc15();
+		case 550: return new MMC1_550();
+		case 551: return new Waixing178();
+		case 552: return new TaitoX1017();
+		case 553: return new Sachen3013();
+		case 554: return new Kaiser7010();
 		case 559: return new Mapper559();
 
 		case UnifBoards::Ac08: return new Ac08(); //mapper 42?
 		case UnifBoards::Cc21: return new Cc21();
 		case UnifBoards::Ghostbusters63in1: return new Ghostbusters63in1(); //mapper 226?
-		case UnifBoards::Gs2013: return new Gs2013();
-		case UnifBoards::Malee: return new Malee(); //mapper 42?
 		case UnifBoards::SssNrom256: return new FamicomBox();
 		case UnifBoards::Unl255in1: return new Unl255in1();
 		case UnifBoards::Unl8237A: return new Unl8237A(); //mapper 215.1
 		case UnifBoards::UnlPuzzle: return new UnlPuzzle();
+		case UnifBoards::Ks106C: return new UnlKs106C(); //mapper 352, sub 1
+		case UnifBoards::ResetNromX1n1: return new BmcResetNromX1n1(); //352
+		case UnifBoards::Hp898f: return new Hp898f(); // Mapper 319 with the differentt bank order, specific for UNIF dump of Prima Soft 9999999-in-1
 
 		case MapperFactory::StudyBoxMapperID: return new StudyBox();
 		case MapperFactory::NsfMapperID: return new NsfMapper();

@@ -36,6 +36,7 @@ protected:
 		BaseExpansionAudio::StreamState(saving);
 		ValueInfo<PSG> psg{ _psg.get() };
 		Stream( _currentRegister, _lastOutput, _clock, psg);
+		if (!saving) PSG_setVolumeMode(_psg.get(), _psg->volumeMode);
 	}
 
 	void ClockAudio() override

@@ -103,6 +103,7 @@ PSG_new(uint32_t c, uint32_t r)
 void
 PSG_setVolumeMode(PSG* psg, int type)
 {
+	psg->volumeMode = type;
 	switch (type)
 	{
 	case 1:
